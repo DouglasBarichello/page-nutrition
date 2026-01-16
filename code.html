@@ -1,0 +1,509 @@
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eduarda Mendes | Nutrição e Saúde</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#545f35",
+                        "background-light": "#fdfbf7",
+                        "background-dark": "#1a1c14",
+                        secondary: "#d1b58a",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'large': '2rem',
+                    },
+                    keyframes: {
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(84, 95, 53, 0.4)' },
+                            '50%': { boxShadow: '0 0 20px 10px rgba(84, 95, 53, 0.1)' },
+                        },
+                        'bounce-subtle': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
+                        'highlight-section': {
+                            '0%': { background: 'transparent', transform: 'scale(1)' },
+                            '50%': { background: 'rgba(209, 181, 138, 0.15)', transform: 'scale(1.02)' },
+                            '100%': { background: 'transparent', transform: 'scale(1)' }
+                        },
+                        'section-glow': {
+                            '0%': { boxShadow: '0 0 0 rgba(209, 181, 138, 0)' },
+                            '50%': { boxShadow: '0 0 40px rgba(209, 181, 138, 0.3)' },
+                            '100%': { boxShadow: '0 0 0 rgba(209, 181, 138, 0)' }
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s infinite',
+                        'bounce-subtle': 'bounce-subtle 0.5s ease-in-out',
+                        'highlight': 'highlight-section 1.5s ease-in-out',
+                        'glow': 'section-glow 2s ease-in-out'
+                    }
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease-out;
+            }
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-pattern {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#545f3511 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .dark .hero-pattern {
+            background-color: #1a1c14;
+            background-image: radial-gradient(#ffffff08 1px, transparent 1px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-placeholder::placeholder {
+            color: #d1b58a !important;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .gold-placeholder:focus::placeholder {
+            opacity: 0.4;
+            transform: translateX(5px);
+        }
+        .nav-scrolled {
+            @apply h-16 bg-background-light/95 dark:bg-background-dark/95 shadow-md;
+        }
+        .pillar-card:hover .material-symbols-outlined {
+            color: #d1b58a;
+            animation: bounce-subtle 0.5s ease-in-out;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .animate-highlight {
+            animation: highlight-section 2s ease-in-out;
+        }
+        .animate-glow {
+            animation: section-glow 2s ease-in-out;
+        }
+        .nav-link {
+            @apply transition-all duration-300 relative;
+        }
+        .nav-link:hover {
+            @apply text-secondary;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: #d1b58a;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans selection:bg-primary selection:text-white">
+<nav class="fixed top-0 w-full z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-all duration-300 h-20" id="main-nav">
+<div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+
+<a
+  href="#"
+  class="font-display text-2xl tracking-widest text-primary dark:text-white
+         uppercase font-medium flex items-center gap-4 group"
+>
+  <div class="w-[60px] h-[60px] shrink-0 logo-float">
+    <img
+      src="logo2.png"
+      alt="Logo Eduarda Mendes"
+      class="w-full h-full object-cover rounded-full
+             object-[50%_20%]
+             transition-transform duration-300 ease-out
+             group-hover:scale-105"
+    />
+  </div>
+
+  <span class="transition-colors duration-300 group-hover:text-secondary">
+    Eduarda Mendes
+  </span>
+</a>
+
+   <div class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-wide uppercase text-gray-600 dark:text-gray-400">
+<a class="nav-link" href="#inicio">Início</a>
+<a class="nav-link" href="#sobre">Sobre</a>
+<a class="nav-link" href="#servicos">Atendimento</a>
+<a class="bg-primary text-white px-6 py-2.5 rounded-full hover:scale-105 hover:shadow-xl transition-all duration-300 smooth-scroll-trigger" href="#contato">Agendar Consulta</a>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<header class="hero-pattern pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden animate-fade-in-up" id="inicio">
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
+<div class="order-2 lg:order-1 text-center lg:text-left">
+<span class="text-secondary font-semibold tracking-[0.2em] uppercase text-sm mb-6 block animate-pulse">Saúde e Bem-Estar</span>
+<h1 class="font-display text-5xl md:text-7xl leading-tight mb-8 dark:text-white">
+                Promovendo saúde através de <span class="italic font-light">escolhas conscientes</span>
+</h1>
+<p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                Transforme sua relação com a comida e conquiste o corpo e a mente que você merece através de uma nutrição descomplicada.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+<a class="bg-primary text-white px-10 py-5 rounded-full text-lg font-medium flex items-center justify-center gap-2 hover:scale-105 hover:shadow-2xl transition-all duration-300 active:scale-95 smooth-scroll-trigger" href="#contato">
+                    Agendar Consulta 
+                    <span class="material-symbols-outlined text-xl">arrow_right_alt</span>
+</a>
+</div>
+</div>
+<div class="order-1 lg:order-2 relative flex justify-center">
+<div class="relative w-72 h-72 md:w-[26rem] md:h-[26rem] lg:w-[32rem] lg:h-[32rem]">
+<div class="absolute inset-0 bg-primary/10 rounded-full animate-ping opacity-20"></div>
+<img alt="Nutricionista Eduarda Mendes" class="w-full h-full object-cover rounded-full shadow-2xl relative z-10 transition-transform duration-700 hover:scale-[1.03] object-[50%_25%]" src="foto0.jpeg" />
+<div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-white dark:bg-gray-800 p-4 rounded-full shadow-lg z-20 animate-float">
+<span class="material-symbols-outlined text-secondary text-4xl md:text-5xl fill-current">verified</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="py-24 bg-white dark:bg-[#151711] reveal">
+<div class="max-w-7xl mx-auto px-6">
+<div class="bg-background-light dark:bg-gray-800/50 rounded-large p-12 md:p-20 shadow-sm border border-gray-100 dark:border-gray-700/50">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="text-center group pillar-card">
+<div class="mb-6 inline-flex p-4 rounded-2xl bg-white dark:bg-gray-700 shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<span class="material-symbols-outlined text-primary text-4xl transition-colors duration-300">nutrition</span>
+</div>
+<h3 class="font-display text-xl mb-3 dark:text-white">Nutrição Clínica</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Plano alimentar personalizado para suas necessidades.</p>
+</div>
+<div class="text-center group pillar-card">
+<div class="mb-6 inline-flex p-4 rounded-2xl bg-white dark:bg-gray-700 shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<span class="material-symbols-outlined text-primary text-4xl transition-colors duration-300">fitness_center</span>
+</div>
+<h3 class="font-display text-xl mb-3 dark:text-white">Performance</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Foco total em resultados e energia para o dia a dia.</p>
+</div>
+<div class="text-center group pillar-card">
+<div class="mb-6 inline-flex p-4 rounded-2xl bg-white dark:bg-gray-700 shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<span class="material-symbols-outlined text-primary text-4xl transition-colors duration-300">psychology</span>
+</div>
+<h3 class="font-display text-xl mb-3 dark:text-white">Comportamental</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Equilíbrio e consciência na sua relação com a comida.</p>
+</div>
+<div class="text-center group pillar-card">
+<div class="mb-6 inline-flex p-4 rounded-2xl bg-white dark:bg-gray-700 shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<span class="material-symbols-outlined text-primary text-4xl transition-colors duration-300">eco</span>
+</div>
+<h3 class="font-display text-xl mb-3 dark:text-white">Longevidade</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Qualidade de vida real através de hábitos saudáveis.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 reveal" id="sobre">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+<div class="relative group">
+<div class="absolute -top-10 -left-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors duration-500"></div>
+<img alt="Eduarda Mendes Fita Métrica " class="rounded-large shadow-2xl relative z-10 transition-all duration-500 group-hover:scale-[1.02] w-full h-[600px] object-cover object-center" src="foto1.jpg"/>
+</div>
+<div>
+<span class="text-secondary font-semibold tracking-widest uppercase text-xs mb-4 block">Sobre Mim</span>
+<h2 class="font-display text-4xl md:text-5xl mb-8 dark:text-white">Eduarda Mendes</h2>
+<div class="space-y-6 text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+<p>Nutricionista apaixonada por descomplicar a alimentação saudável. Acredito que o caminho para a saúde não precisa de restrições extremas, mas sim de conhecimento e autonomia.</p>
+<p>Minha missão é guiar você em uma jornada de autoconhecimento alimentar, onde cada escolha é feita com consciência e prazer.</p>
+</div>
+<div class="mt-12 border-l-4 border-secondary pl-8 py-2 hover:border-primary transition-colors duration-300">
+<blockquote class="font-display text-2xl italic text-primary dark:text-gray-300">
+                    "Sua alimentação é o seu melhor investimento a longo prazo."
+                </blockquote>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-primary text-white rounded-t-[3rem] md:rounded-t-[6rem] reveal" id="servicos">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<h2 class="font-display text-4xl md:text-5xl mb-4">Atendimentos Online</h2>
+<p class="text-primary-foreground/80 text-lg">Praticidade e conforto onde você estiver</p>
+</div>
+<div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto mb-20">
+<div class="text-center md:text-left flex flex-col items-center md:items-start group">
+<div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-all duration-300 group-hover:-rotate-6">
+<span class="material-symbols-outlined text-3xl">videocam</span>
+</div>
+<h3 class="text-xl font-semibold mb-4">Videoconferência</h3>
+<p class="text-white/70 leading-relaxed">Consulta completa via Google Meet ou WhatsApp, com a mesma qualidade do presencial.</p>
+</div>
+<div class="text-center md:text-left flex flex-col items-center md:items-start group">
+<div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-all duration-300 group-hover:-rotate-6">
+<span class="material-symbols-outlined text-3xl">stay_primary_portrait</span>
+</div>
+<h3 class="text-xl font-semibold mb-4">App Exclusivo</h3>
+<p class="text-white/70 leading-relaxed">Acesso ao seu plano alimentar, receitas e chat direto para tirar dúvidas em tempo real.</p>
+</div>
+<div class="text-center md:text-left flex flex-col items-center md:items-start group">
+<div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-all duration-300 group-hover:-rotate-6">
+<span class="material-symbols-outlined text-3xl">support_agent</span>
+</div>
+<h3 class="text-xl font-semibold mb-4">Suporte Contínuo</h3>
+<p class="text-white/70 leading-relaxed">Dúvidas respondidas em até 24h úteis para garantir que você nunca se sinta desamparado.</p>
+</div>
+</div>
+<div class="flex justify-center">
+<a class="bg-white text-primary px-12 py-5 rounded-full text-lg font-bold hover:scale-110 hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-all duration-300 smooth-scroll-trigger" href="#contato">
+                Quero começar agora
+            </a>
+</div>
+</div>
+</section>
+<section class="py-16 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+<a class="inline-flex items-center gap-3 bg-primary px-12 py-5 rounded-full shadow-lg transition-all duration-300 animate-pulse-glow group" href="https://www.instagram.com/_eduardamendes_/" rel="noopener noreferrer" target="_blank">
+<svg class="w-8 h-8 text-white group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+</svg>
+<span class="text-xl md:text-2xl font-medium tracking-tight text-white">@nutri.eduardamendes</span>
+</a>
+</div>
+</section>
+<section class="py-24 reveal scroll-mt-24" id="contato">
+<div class="max-w-3xl mx-auto px-6 contact-container p-8 rounded-large border border-transparent transition-all duration-1000">
+<div class="text-center mb-16 contact-header rounded-xl py-4 transition-all">
+<h2 class="font-display text-4xl mb-4 text-primary dark:text-white uppercase tracking-tight">Vamos conversar?</h2>
+<p class="text-secondary font-medium text-lg">Preencha os dados abaixo e entrarei em contato via WhatsApp.</p>
+</div>
+<form id="form-nutricao" class="space-y-8">
+<div class="grid grid-cols-1 gap-8">
+<div class="group">
+<label class="block text-sm font-semibold uppercase tracking-widest text-primary dark:text-primary mb-3 transition-colors group-focus-within:text-secondary">Nome Completo</label>
+<input class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-4 focus:ring-primary focus:border-primary gold-placeholder transition-all duration-300 outline-none" placeholder="Seu nome" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="group">
+<label class="block text-sm font-semibold uppercase tracking-widest text-primary dark:text-primary mb-3 transition-colors group-focus-within:text-secondary">Idade</label>
+<input class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-4 focus:ring-primary focus:border-primary gold-placeholder transition-all duration-300 outline-none" placeholder="Ex: 28" type="text"/>
+</div>
+<div class="group">
+<label class="block text-sm font-semibold uppercase tracking-widest text-primary dark:text-primary mb-3 transition-colors group-focus-within:text-secondary">Sexo</label>
+<select class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-4 focus:ring-primary focus:border-primary text-[#d1b58a] transition-all duration-300 outline-none">
+<option value="">Selecione</option>
+<option class="text-gray-800 dark:text-gray-200">Feminino</option>
+<option class="text-gray-800 dark:text-gray-200">Masculino</option>
+<option class="text-gray-800 dark:text-gray-200">Prefiro não dizer</option>
+</select>
+</div>
+</div>
+<div class="group">
+<label class="block text-sm font-semibold uppercase tracking-widest text-primary dark:text-primary mb-3 transition-colors group-focus-within:text-secondary">E-mail</label>
+<input class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-4 focus:ring-primary focus:border-primary gold-placeholder transition-all duration-300 outline-none" placeholder="seu@email.com" type="email"/>
+</div>
+<div class="group">
+<label class="block text-sm font-semibold uppercase tracking-widest text-primary dark:text-primary mb-3 transition-colors group-focus-within:text-secondary">Número de Celular</label>
+<input class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-4 focus:ring-primary focus:border-primary gold-placeholder transition-all duration-300 outline-none" placeholder="(00) 00000-0000" type="tel"/>
+</div>
+<div class="group">
+<label class="block text-sm font-semibold uppercase tracking-widest text-primary dark:text-primary mb-3 transition-colors group-focus-within:text-secondary">Qual o seu Objetivo?</label>
+<textarea class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-4 focus:ring-primary focus:border-primary gold-placeholder transition-all duration-300 outline-none" placeholder="Escreva aqui sua mensagem..." rows="4"></textarea>
+</div>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-5 rounded-lg ...">
+    Enviar
+</button>
+</form>
+</div>
+</section>
+<footer class="py-20 border-t border-gray-100 dark:border-gray-800 text-center reveal">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-display text-2xl tracking-[0.2em] text-primary dark:text-white uppercase mb-4">Eduarda Mendes</h2>
+<div class="flex flex-col items-center space-y-3 mb-10">
+<p class="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest">Nutrição e Saúde • CRN-X 0000</p>
+<a class="flex items-center justify-center gap-2 hover:text-primary transition-colors text-sm text-gray-500 dark:text-gray-400 group" href="mailto:nutri.eduardamendes@gmail.com">
+<span class="material-symbols-outlined text-base group-hover:rotate-12 transition-transform">mail</span>
+                nutri.eduardamendes@gmail.com
+            </a>
+<div class="pt-10 flex flex-col items-center">
+<span class="text-[9px] uppercase tracking-[0.4em] text-gray-400 mb-6 font-semibold">Design &amp; Development</span>
+<a class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity" href="https://www.linkedin.com/messaging/thread/new/?recipient=douglas-barichello-9812a0238" rel="noopener noreferrer" target="_blank">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M50 5 L10 28 L10 72 L50 95 L90 72 L90 28 Z" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path d="M35 45 L50 35 L65 45 L65 65 L50 75 L35 65 Z" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path d="M10 28 L35 45" stroke="currentColor" stroke-width="2"></path>
+<path d="M10 72 L35 65" stroke="currentColor" stroke-width="2"></path>
+<path d="M90 28 L65 45" stroke="currentColor" stroke-width="2"></path>
+<path d="M90 72 L65 65" stroke="currentColor" stroke-width="2"></path>
+<path d="M50 5 L50 35" stroke="currentColor" stroke-width="2"></path>
+<path d="M50 95 L50 75" stroke="currentColor" stroke-width="2"></path>
+<circle cx="10" cy="28" fill="currentColor" r="3"></circle>
+<circle cx="10" cy="72" fill="currentColor" r="3"></circle>
+<circle cx="90" cy="28" fill="currentColor" r="3"></circle>
+<circle cx="90" cy="72" fill="currentColor" r="3"></circle>
+<circle cx="50" cy="5" fill="currentColor" r="3"></circle>
+<circle cx="50" cy="95" fill="currentColor" r="3"></circle>
+<text fill="currentColor" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" x="50" y="62">B</text>
+</svg>
+</div>
+<div class="text-left flex flex-col">
+<span class="text-2xl font-bold tracking-tighter leading-none">BARICHELLO</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-medium leading-tight">Desenvolvimentos</span>
+</div>
+</a>
+</div>
+<p class="text-xs text-gray-400 pt-10">© 2024 Todos os direitos reservados.</p>
+</div>
+<div class="flex justify-center space-x-6">
+<a class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary hover:scale-110 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary hover:scale-110 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">public</span>
+</a>
+</div>
+</div>
+</footer>
+<a class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-50 flex items-center justify-center animate-float" href="https://wa.me/yournumber">
+<svg fill="currentColor" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.012l-.582 2.128 2.18-.573c.703.389 1.558.596 2.431.599l.002 0c3.182 0 5.767-2.586 5.768-5.766 0-3.18-2.585-5.766-5.766-5.766zm3.446 8.212c-.149.423-.867.769-1.202.814-.335.045-.733.064-1.22-.095-.294-.096-.649-.241-1.096-.435-1.905-.823-3.131-2.766-3.226-2.893-.094-.128-.769-.993-.769-1.896 0-.904.475-1.348.643-1.545.17-.197.369-.247.492-.247.123 0 .245.001.351.005.114.004.268-.043.419.324.154.373.528 1.288.574 1.381.047.094.077.202.016.324-.061.123-.092.198-.184.305-.092.106-.192.237-.275.318-.093.091-.19.19-.082.375.108.184.481.794 1.034 1.286.711.633 1.31.83 1.493.923.184.093.292.077.4-.047.108-.124.462-.538.585-.722.124-.184.247-.154.417-.091.171.063 1.082.511 1.267.603.185.093.308.139.354.215.047.077.047.446-.103.869z"></path>
+<path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 18.602c-1.233 0-2.392-.326-3.393-.896l-3.607.95 1.011-3.693c-.636-1.026-.984-2.228-.984-3.486 0-3.654 2.973-6.627 6.627-6.627s6.627 2.973 6.627 6.627-2.973 6.627-6.627 6.627z"></path>
+</svg>
+</a>
+<script>
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    });
+    document.querySelectorAll('.smooth-scroll-trigger').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (targetId === '#contato') {
+                    const header = targetElement.querySelector('.contact-header');
+                    const container = targetElement.querySelector('.contact-container');
+                    setTimeout(() => {
+                        header.classList.add('animate-highlight');
+                        container.classList.add('animate-glow');
+                        container.style.borderColor = '#d1b58a';
+                        setTimeout(() => {
+                            header.classList.remove('animate-highlight');
+                            container.classList.remove('animate-glow');
+                            container.style.borderColor = 'transparent';
+                        }, 2000);
+                    }, 800);
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('form-nutricao');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nome = this.querySelector('input[placeholder="Seu nome"]').value;
+            const idade = this.querySelector('input[placeholder="Ex: 28"]').value;
+            const sexo = this.querySelector('select').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const celular = this.querySelector('input[type="tel"]').value;
+            const objetivo = this.querySelector('textarea').value;
+
+            // Seleção de Emojis Profissionais (Sóbrios e Elegantes)
+            const iconFolha = "\uD83C\uDF3F";      // 🌿 (Saúde Natural)
+            const iconCheck = "\u2714\uFE0F";     // ✔️ (Confirmação)
+            const iconPerfil = "\uD83D\uDCC4";     // 📄 (Documento/Prontuário)
+            const iconFoco = "\uD83C\uDFAF";       // 🎯 (Objetivo/Meta)
+            const iconEstrela = "\u2728";          // ✨ (Transformação)
+
+            // Montagem da Mensagem - Foco em Lifestyle
+            const saudacao = `${iconEstrela} *Bem-vindo(a) ao meu novo espaço nutricional!*`;
+            const introducao = `Olá, *${nome}*! É um prazer iniciar essa jornada com você. Vamos transformar seu lifestyle e alcançar sua melhor versão. ${iconFolha}`;
+            
+            const corpoMensagem = 
+                `--------------------------------\n` +
+                `${iconPerfil} *MEUS DADOS DE CADASTRO*\n\n` +
+                `• *Idade:* ${idade} anos\n` +
+                `• *Sexo:* ${sexo}\n` +
+                `• *E-mail:* ${email}\n` +
+                `• *WhatsApp:* ${celular}\n` +
+                `--------------------------------\n` +
+                `${iconFoco} *MEU OBJETIVO*\n\n` +
+                `"${objetivo}"\n` +
+                `--------------------------------\n` +
+                `${iconCheck} *A minha mudança começa agora!* ${iconEstrela}`;
+
+            const mensagemFinal = encodeURIComponent(`${saudacao}\n\n${introducao}\n\n${corpoMensagem}`);
+            const numeroWhatsApp = "5527996501527"; 
+
+            window.location.href = `https://wa.me/${numeroWhatsApp}?text=${mensagemFinal}`;
+        });
+    }
+});
+</script>
+</body></html>
