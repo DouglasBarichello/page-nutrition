@@ -136,9 +136,33 @@
             background-color: #d1b58a;
             transition: width 0.3s ease;
         }
+
+        /* Painel Lateral Profissional e Sólido */
+    #mobile-menu-panel {
+        background-color: #fdfbf7 !important; /* Cor background-light sólida */
+        background-image: none !important;    /* Remove transparência/pontos */
+        box-shadow: -15px 0 35px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Ajuste para Modo Escuro */
+    .dark #mobile-menu-panel {
+        background-color: #1a1c14 !important; /* Cor background-dark sólida */
+    }
+
+    /* Backdrop Suave */
+    #mobile-menu-overlay {
+        transition: opacity 0.4s ease-in-out;
+    }
+/* ----------------------------------------- */
         .nav-link:hover::after {
             width: 100%;
         }
+
+
+        .mobile-link {
+            @apply transition-colors duration-300;
+        }   
+
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans selection:bg-primary selection:text-white">
@@ -166,16 +190,65 @@
   </span>
 </a>
 
-   <div class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-wide uppercase text-gray-600 dark:text-gray-400">
+<div class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-wide uppercase text-gray-600 dark:text-gray-400">
 <a class="nav-link" href="#inicio">Início</a>
 <a class="nav-link" href="#sobre">Sobre</a>
 <a class="nav-link" href="#servicos">Atendimento</a>
 <a class="bg-primary text-white px-6 py-2.5 rounded-full hover:scale-105 hover:shadow-xl transition-all duration-300 smooth-scroll-trigger" href="#contato">Agendar Consulta</a>
+
 </div>
-<button class="md:hidden text-primary">
-<span class="material-symbols-outlined">menu</span>
+<button id="open-menu" class="md:hidden text-primary">
+  <span class="material-symbols-outlined text-3xl">menu</span>
 </button>
 </div>
+
+
+
+
+
+
+
+
+
+
+<div id="mobile-menu" class="fixed inset-0 z-[120] hidden md:hidden">
+  <div id="mobile-menu-overlay" class="absolute inset-0 bg-black/0 backdrop-blur-sm transition-all duration-500"></div>
+
+  <div
+    id="mobile-menu-panel"
+    class="absolute top-0 right-0 w-[300px] h-full flex flex-col transform translate-x-full transition-transform duration-300 ease-out"
+  >
+    <div class="h-20 flex items-center justify-end px-6 border-b border-gray-100 dark:border-gray-800 bg-inherit">
+      <button id="close-menu" class="text-primary p-2 hover:rotate-90 transition-transform">
+        <span class="material-symbols-outlined text-4xl">close</span>
+      </button>
+    </div>
+
+    <nav class="flex flex-col p-8 gap-1 bg-white dark:bg-gray-900 flex-grow rounded-b-2xl">
+      <a href="#inicio" class="mobile-link text-xl font-display text-center dark:text-white py-4 border-b dark:border-gray-800/50">Início</a>
+      <a href="#sobre" class="mobile-link text-xl font-display text-center dark:text-white py-4 border-b dark:border-gray-800/50">Sobre</a>
+      <a href="#servicos" class="mobile-link text-xl font-display text-center dark:text-white py-4 border-b  dark:border-gray-800/50">Atendimento</a>
+      
+      <a href="#contato" class="mobile-link mt-8 bg-primary text-white px-6 py-4 rounded-xl text-center font-semibold shadow-xl active:scale-95 transition-all">
+        Agendar Consulta
+      </a>
+    </nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </nav>
 <header class="hero-pattern pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden animate-fade-in-up" id="inicio">
 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
@@ -419,6 +492,47 @@
 <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 18.602c-1.233 0-2.392-.326-3.393-.896l-3.607.95 1.011-3.693c-.636-1.026-.984-2.228-.984-3.486 0-3.654 2.973-6.627 6.627-6.627s6.627 2.973 6.627 6.627-2.973 6.627-6.627 6.627z"></path>
 </svg>
 </a>
+
+
+
+<script>
+  const openMenu = document.getElementById("open-menu");
+  const closeMenu = document.getElementById("close-menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const panel = document.getElementById("mobile-menu-panel");
+  const links = document.querySelectorAll(".mobile-link");
+
+  function openMobileMenu() {
+    mobileMenu.classList.remove("hidden");
+    setTimeout(() => {
+      panel.classList.remove("translate-x-full");
+    }, 10);
+  }
+
+  function closeMobileMenu() {
+    panel.classList.add("translate-x-full");
+    setTimeout(() => {
+      mobileMenu.classList.add("hidden");
+    }, 300);
+  }
+
+  openMenu.addEventListener("click", openMobileMenu);
+  closeMenu.addEventListener("click", closeMobileMenu);
+
+  mobileMenu.addEventListener("click", (e) => {
+    if (e.target === mobileMenu) {
+      closeMobileMenu();
+    }
+  });
+
+  links.forEach(link => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+</script>
+
+
+
+
 <script>
     function reveal() {
         var reveals = document.querySelectorAll(".reveal");
@@ -468,6 +582,9 @@
         });
     });
 </script>
+
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
